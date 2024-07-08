@@ -1,13 +1,19 @@
 .restaurantButtons {
-	display: flex;
-	gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer {
-	display: grid;
+  margin-top: 50px;
+  display: grid;
+}
+
+.counter {
+  display: flex;
+  gap: 5px;
 }

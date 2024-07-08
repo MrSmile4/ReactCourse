@@ -1,4 +1,5 @@
 import "./restaurant.css";
+import { ReviewForm } from "./review-form/review-form";
 
 export function Reviews({ reviews }) {
   return (
@@ -16,6 +17,7 @@ export function Reviews({ reviews }) {
           </>
         ))}
       </ul>
+      <ReviewForm />
     </>
   );
 }
