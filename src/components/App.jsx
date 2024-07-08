@@ -17,7 +17,6 @@ function App() {
   return (
     <div>
       <Layout>
-        <div className="progressBar"></div>
         <h1>Restaurants list</h1>
         <div className="restaurantButtons">
           {restaurants.map((restaurant) => (
