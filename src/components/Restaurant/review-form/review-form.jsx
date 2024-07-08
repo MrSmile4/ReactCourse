@@ -29,6 +29,8 @@ export function ReviewForm() {
   const [form, dispatch] = useReducer(reducer, INIT_FORM);
   const { name, text, score } = form;
 
+  const isReviewWritten = form.name === "" || form.text === "";
+
   useEffect(() => {
     dispatch({ type: "setScore", payload: count });
   }, [count]);
@@ -68,6 +70,7 @@ export function ReviewForm() {
       </div>
       <div className="buttons">
         <button
+          disabled={isReviewWritten}
           className="clearButton"
           onClick={() => {
             clear(), dispatch({ type: "clear" });

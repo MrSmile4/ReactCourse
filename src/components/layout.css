@@ -17,3 +17,11 @@
   display: flex;
   gap: 5px;
 }
+
+.progressBar {
+  background-color: #dc2626;
+  top: 0;
+  position: fixed;
+  height: 10px;
+  left: 0;
+}
