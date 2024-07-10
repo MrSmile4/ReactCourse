@@ -1,0 +1,13 @@
+.root {
+  height: 8px;
+  background: navy;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.progressBar {
+  background: green;
+  height: 8px;
+}

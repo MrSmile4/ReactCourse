@@ -1,6 +1,7 @@
 import "./restaurant.css";
+import { Counter } from "../counter";
 
-export function Menu({ menu, counters, decrement, increment }) {
+export function Menu({ menu }) {
   return (
     <>
       <h3 className="blueLabel">Меню:</h3>
@@ -16,11 +17,7 @@ export function Menu({ menu, counters, decrement, increment }) {
                   return i === ingredients.length - 1 ? ing : ing + ", ";
                 })}
               </span>
-              <div className="textFlex">
-                <button onClick={() => decrement(index)}>-</button>
-                {counters[index].count}
-                <button onClick={() => increment(index)}>+</button>
-              </div>
+              <Counter />
             </li>
           </>
         ))}

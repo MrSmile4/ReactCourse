@@ -2,7 +2,6 @@ import { Layout } from "./Layout";
 import { Restaurant } from "./Restaurant/Restaurant";
 import { restaurants } from "../../materials/mock";
 import { useState } from "react";
-import { useCounters } from "./use-counters";
 import "./layout.css";
 
 function App() {
@@ -10,13 +9,8 @@ function App() {
     restaurants.length ? restaurants[0] : null
   );
 
-  const currentRestMenu = currentRest?.menu || [];
-  const { counters, increment, decrement, update } =
-    useCounters(currentRestMenu);
-
   function changeRest(id) {
     const rest = restaurants.find((restaurant) => restaurant.id === id);
-    update(rest.menu);
     setCurrentRest(rest);
   }
 
@@ -34,10 +28,8 @@ function App() {
           ))}
         </div>
         <Restaurant
+          key={currentRest.id}
           rest={currentRest}
-          counters={counters}
-          increment={increment}
-          decrement={decrement}
         />
       </Layout>
     </div>

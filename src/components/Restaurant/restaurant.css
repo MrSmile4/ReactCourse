@@ -1,21 +1,16 @@
 .brownLabel {
-	color: brown;
+  color: brown;
 }
 
 .blueLabel {
-	color: blue;
+  color: blue;
 }
 
 .textGrid {
-	display: grid;
+  display: grid;
 }
 
 .textGridWithGap {
-	display: grid;
-	gap: 15px;
-}
-
-.textFlex {
-	display: flex;
-	gap: 5px;
+  display: grid;
+  gap: 15px;
 }
