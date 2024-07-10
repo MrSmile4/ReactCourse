@@ -1,8 +1,8 @@
-import { Layout } from "./Layout";
-import { Restaurant } from "./Restaurant/Restaurant";
-import { restaurants } from "../../materials/mock";
+import { Restaurant } from "../Restaurant/Restaurant";
+import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
-import "./layout.css";
+import { Layout } from "../layout/Layout";
+import styles from "./app.module.css";
 
 function App() {
   const [currentRest, setCurrentRest] = useState(
@@ -18,9 +18,10 @@ function App() {
     <div>
       <Layout>
         <h1>Restaurants list</h1>
-        <div className="restaurantButtons">
+        <div className={styles.restaurantButtons}>
           {restaurants.map((restaurant) => (
             <button
+              className={styles.restaurantButton}
               key={restaurant.id}
               onClick={() => changeRest(restaurant.id)}>
               {restaurant.name}

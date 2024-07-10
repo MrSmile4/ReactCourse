@@ -3,7 +3,7 @@
 }
 
 .blueLabel {
-  color: blue;
+  color: navy;
 }
 
 .textGrid {
@@ -13,4 +13,8 @@
 .textGridWithGap {
   display: grid;
   gap: 15px;
+}
+
+.ratingColor {
+  color: rgb(252, 252, 40);
 }

@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  gap: 5px;
+}
+
+.button {
+  border-width: 2px;
+  border-style: dotted solid;
+}
+
+.plusButton {
+  background-color: lightcoral;
+}
+
+.minusButton {
+  background-color: lightblue;
+}

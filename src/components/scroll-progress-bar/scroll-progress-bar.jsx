@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./scroll-progress-bar.css";
+import styles from "./scroll-progress-bar.module.css";
 
 export function ScrollProgressBar() {
   const [scrollPercent, setScrollPercent] = useState(0);
@@ -23,14 +23,12 @@ export function ScrollProgressBar() {
   }, []);
 
   return (
-    <div className="root">
-      <div
-        className="progressBar"
-        style={{
-          width: `${scrollPercent}%`,
-        }}
-      />
-    </div>
+    <div
+      className={styles.progressBar}
+      style={{
+        width: `${scrollPercent}%`,
+      }}
+    />
   );
 }
 

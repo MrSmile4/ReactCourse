@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
-import { useCount } from "../../counter";
-import "./review-form.css";
+import { useCount } from "../../hooks/use-count";
+import styles from "./review-form.module.css";
 
 const INIT_FORM = {
   name: "",
@@ -36,8 +36,8 @@ export function ReviewForm() {
   }, [count]);
 
   return (
-    <div className="reviewContainer">
-      <span className="headerText">Оставьте свой отзыв</span>
+    <div className={styles.reviewContainer}>
+      <span className={styles.headerText}>Оставьте свой отзыв</span>
       <span>Name: </span>
       <input
         value={name}
@@ -53,7 +53,7 @@ export function ReviewForm() {
         }}
       />
       <span>Score: </span>
-      <div className="counter">
+      <div className={styles.counter}>
         <button
           onClick={() => {
             decrement();
@@ -68,17 +68,17 @@ export function ReviewForm() {
           +
         </button>
       </div>
-      <div className="buttons">
+      <div className={styles.buttons}>
         <button
           disabled={isReviewWritten}
-          className="clearButton"
+          className={styles.clearButton}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Save
         </button>
         <button
-          className="clearButton"
+          className={styles.clearButton}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
