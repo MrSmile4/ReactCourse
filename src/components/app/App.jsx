@@ -2,6 +2,7 @@ import { Restaurant } from "../Restaurant/Restaurant";
 import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 import { Layout } from "../layout/Layout";
+import CustomButton from "../custom-button/custom-button";
 import styles from "./app.module.css";
 
 function App() {
@@ -20,12 +21,12 @@ function App() {
         <h1>Restaurants list</h1>
         <div className={styles.restaurantButtons}>
           {restaurants.map((restaurant) => (
-            <button
-              className={styles.restaurantButton}
+            <CustomButton
+              style={styles.restaurantButton}
               key={restaurant.id}
               onClick={() => changeRest(restaurant.id)}>
               {restaurant.name}
-            </button>
+            </CustomButton>
           ))}
         </div>
         <Restaurant

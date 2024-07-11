@@ -3,13 +3,3 @@ body {
   background-color: rgb(120, 200, 211);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
-button {
-  background-color: rgb(167, 226, 191);
-  border: 1px solid;
-}
-
-input {
-  background-color: rgb(250, 238, 212);
-  border-width: 0;
-}

@@ -1,4 +1,5 @@
 import { useCount } from "../hooks/use-count";
+import CustomButton from "../custom-button/custom-button";
 import classNames from "classnames";
 import styles from "./counter.module.css";
 
@@ -7,17 +8,17 @@ export const Counter = () => {
 
   return (
     <div className={styles.counter}>
-      <button
-        className={classNames(styles.button, styles.minusButton)}
+      <CustomButton
+        style={classNames(styles.button, styles.minusButton)}
         onClick={decrement}>
         -
-      </button>
+      </CustomButton>
       {count}
-      <button
-        className={classNames(styles.button, styles.plusButton)}
+      <CustomButton
+        style={classNames(styles.button, styles.plusButton)}
         onClick={increment}>
         +
-      </button>
+      </CustomButton>
     </div>
   );
 };

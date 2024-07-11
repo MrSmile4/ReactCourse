@@ -1,11 +1,11 @@
-import { Menu } from "./Menu";
-import { Reviews } from "./Reviews";
+import { Menu } from "./menu/Menu";
 import styles from "./restaurant.module.css";
+import { Reviews } from "./reviews/Reviews";
 
 export function Restaurant({ rest }) {
   return (
     <div>
-      <h2 className={styles.brownLabel}>{rest.name}</h2>
+      <h2 className={styles.restaurantLabel}>{rest.name}</h2>
       {rest.menu?.length ? (
         <Menu menu={rest.menu} />
       ) : (

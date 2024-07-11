@@ -1,20 +1,3 @@
-.brownLabel {
+.restaurantLabel {
   color: brown;
-}
-
-.blueLabel {
-  color: navy;
-}
-
-.textGrid {
-  display: grid;
-}
-
-.textGridWithGap {
-  display: grid;
-  gap: 15px;
-}
-
-.ratingColor {
-  color: rgb(252, 252, 40);
 }

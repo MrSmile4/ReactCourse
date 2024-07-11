@@ -1,5 +1,5 @@
-import logo from "../../images/restaurants.png";
-import styles from "./layout.module.css";
+import logo from "../../../images/restaurants.png";
+import styles from "./header.module.css";
 
 export function Header() {
   return (

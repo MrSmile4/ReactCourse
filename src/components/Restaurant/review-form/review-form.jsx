@@ -1,5 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { useCount } from "../../hooks/use-count";
+import CustomButton from "../../custom-button/custom-button";
+import CustomInput from "../../custom-input/custom-input";
 import styles from "./review-form.module.css";
 
 const INIT_FORM = {
@@ -39,14 +41,14 @@ export function ReviewForm() {
     <div className={styles.reviewContainer}>
       <span className={styles.headerText}>Оставьте свой отзыв</span>
       <span>Name: </span>
-      <input
+      <CustomInput
         value={name}
         onChange={(event) => {
           dispatch({ type: "setName", payload: event.target.value });
         }}
       />
       <span>Text: </span>
-      <input
+      <CustomInput
         value={text}
         onChange={(event) => {
           dispatch({ type: "setText", payload: event.target.value });
@@ -54,36 +56,36 @@ export function ReviewForm() {
       />
       <span>Score: </span>
       <div className={styles.counter}>
-        <button
+        <CustomButton
           onClick={() => {
             decrement();
           }}>
           -
-        </button>
+        </CustomButton>
         {score}
-        <button
+        <CustomButton
           onClick={() => {
             increment();
           }}>
           +
-        </button>
+        </CustomButton>
       </div>
       <div className={styles.buttons}>
-        <button
+        <CustomButton
           disabled={isReviewWritten}
-          className={styles.clearButton}
+          style={styles.clearButton}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Save
-        </button>
-        <button
-          className={styles.clearButton}
+        </CustomButton>
+        <CustomButton
+          style={styles.clearButton}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Clear
-        </button>
+        </CustomButton>
       </div>
     </div>
   );
