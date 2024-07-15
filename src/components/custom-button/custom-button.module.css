@@ -1,0 +1,19 @@
+.customButton {
+  border: 1px solid;
+}
+
+.wideButton {
+  width: 60px;
+}
+
+.defaultColor {
+  background-color: rgb(167, 226, 191);
+}
+
+.redColor {
+  background-color: lightcoral;
+}
+
+.blueColor {
+  background-color: lightblue;
+}

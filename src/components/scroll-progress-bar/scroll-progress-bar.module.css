@@ -1,0 +1,15 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to right,
+    rgb(26, 140, 184),
+    rgb(26, 125, 184),
+    rgb(26, 110, 184),
+    rgb(26, 95, 184),
+    rgb(26, 80, 184)
+  );
+  height: 8px;
+}

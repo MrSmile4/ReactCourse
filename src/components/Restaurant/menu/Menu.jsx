@@ -1,14 +1,15 @@
-import "./restaurant.css";
-import { Counter } from "../counter";
+import { Counter } from "../../counter/counter";
+import { TitleLabel } from "../title-label/title-label";
+import styles from "./menu.module.css";
 
 export function Menu({ menu }) {
   return (
     <>
-      <h3 className="blueLabel">Меню:</h3>
-      <ul className="textGridWithGap">
-        {menu.map((dish, index) => (
+      <TitleLabel label="Меню:" />
+      <ul className={styles.menuTextGridWithGap}>
+        {menu.map((dish) => (
           <>
-            <li className="textGrid">
+            <li className={styles.menuTextGrid}>
               <span>Name: {dish.name}</span>
               <span>Price: {dish.price}</span>
               <span>

@@ -1,6 +1,8 @@
 import { useEffect, useReducer } from "react";
-import { useCount } from "../../counter";
-import "./review-form.css";
+import { useCount } from "../../hooks/use-count";
+import { CustomButton } from "../../custom-button/custom-button";
+import { CustomInput } from "../../custom-input/custom-input";
+import styles from "./review-form.module.css";
 
 const INIT_FORM = {
   name: "",
@@ -36,54 +38,54 @@ export function ReviewForm() {
   }, [count]);
 
   return (
-    <div className="reviewContainer">
-      <span className="headerText">Оставьте свой отзыв</span>
+    <div className={styles.reviewContainer}>
+      <span className={styles.headerText}>Оставьте свой отзыв</span>
       <span>Name: </span>
-      <input
+      <CustomInput
         value={name}
         onChange={(event) => {
           dispatch({ type: "setName", payload: event.target.value });
         }}
       />
       <span>Text: </span>
-      <input
+      <CustomInput
         value={text}
         onChange={(event) => {
           dispatch({ type: "setText", payload: event.target.value });
         }}
       />
       <span>Score: </span>
-      <div className="counter">
-        <button
+      <div className={styles.counter}>
+        <CustomButton
           onClick={() => {
             decrement();
           }}>
           -
-        </button>
+        </CustomButton>
         {score}
-        <button
+        <CustomButton
           onClick={() => {
             increment();
           }}>
           +
-        </button>
+        </CustomButton>
       </div>
-      <div className="buttons">
-        <button
+      <div className={styles.buttons}>
+        <CustomButton
           disabled={isReviewWritten}
-          className="clearButton"
+          viewVariant={"wide"}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Save
-        </button>
-        <button
-          className="clearButton"
+        </CustomButton>
+        <CustomButton
+          viewVariant={"wide"}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Clear
-        </button>
+        </CustomButton>
       </div>
     </div>
   );

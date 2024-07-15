@@ -1,10 +1,10 @@
 import { useState, useCallback } from "react";
-import "./layout.css";
 
-export const useCount = () => {
-  const [count, setCount] = useState(0);
-  const min = 0;
-  const max = 5;
+const min = 0;
+const max = 5;
+
+export function useCount() {
+  const [count, setCount] = useState(min);
 
   const increment = useCallback(() => {
     setCount((prevState) => (prevState + 1 > max ? prevState : prevState + 1));
@@ -15,7 +15,7 @@ export const useCount = () => {
   }, []);
 
   const clear = useCallback(() => {
-    setCount(0);
+    setCount(min);
   }, []);
 
   return {
@@ -24,16 +24,4 @@ export const useCount = () => {
     decrement,
     clear,
   };
-};
-
-export const Counter = () => {
-  const { count, decrement, increment } = useCount();
-
-  return (
-    <div className="counter">
-      <button onClick={decrement}>-</button>
-      {count}
-      <button onClick={increment}>+</button>
-    </div>
-  );
-};
+}

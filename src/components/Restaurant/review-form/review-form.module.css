@@ -13,6 +13,8 @@
   display: flex;
   justify-content: space-between;
 }
-.clearButton {
-  width: 60px;
+
+.counter {
+  display: flex;
+  gap: 5px;
 }
