@@ -22,5 +22,3 @@ export function CustomButton({
     </button>
   );
 }
-
-export default CustomButton;

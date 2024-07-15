@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { useCount } from "../../hooks/use-count";
-import CustomButton from "../../custom-button/custom-button";
-import CustomInput from "../../custom-input/custom-input";
+import { CustomButton } from "../../custom-button/custom-button";
+import { CustomInput } from "../../custom-input/custom-input";
 import styles from "./review-form.module.css";
 
 const INIT_FORM = {

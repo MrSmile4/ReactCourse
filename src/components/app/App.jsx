@@ -2,11 +2,11 @@ import { Restaurant } from "../Restaurant/Restaurant";
 import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 import { Layout } from "../layout/Layout";
-import CustomButton from "../custom-button/custom-button";
-import ScrollProgressBar from "../scroll-progress-bar/scroll-progress-bar";
+import { CustomButton } from "../custom-button/custom-button";
+import { ScrollProgressBar } from "../scroll-progress-bar/scroll-progress-bar";
 import styles from "./app.module.css";
 
-function App() {
+export function App() {
   const [currentRest, setCurrentRest] = useState(
     restaurants.length ? restaurants[0] : null
   );
@@ -39,5 +39,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

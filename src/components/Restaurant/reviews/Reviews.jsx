@@ -1,5 +1,5 @@
 import { ReviewForm } from "../review-form/review-form";
-import TitleLabel from "../title-label/title-label";
+import { TitleLabel } from "../title-label/title-label";
 import styles from "./reviews.module.css";
 
 export function Reviews({ reviews }) {

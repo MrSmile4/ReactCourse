@@ -31,5 +31,3 @@ export function ScrollProgressBar() {
     />
   );
 }
-
-export default ScrollProgressBar;

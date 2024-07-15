@@ -1,5 +1,5 @@
 import { useCount } from "../hooks/use-count";
-import CustomButton from "../custom-button/custom-button";
+import { CustomButton } from "../custom-button/custom-button";
 import styles from "./counter.module.css";
 
 export function Counter() {

@@ -8,5 +8,3 @@ export function CustomInput({ value, onChange }) {
       className={styles.customInput}></input>
   );
 }
-
-export default CustomInput;

@@ -1,5 +1,5 @@
 import { Counter } from "../../counter/counter";
-import TitleLabel from "../title-label/title-label";
+import { TitleLabel } from "../title-label/title-label";
 import styles from "./menu.module.css";
 
 export function Menu({ menu }) {
