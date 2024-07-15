@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 const min = 0;
 const max = 5;
 
-export const useCount = () => {
+export function useCount() {
   const [count, setCount] = useState(min);
 
   const increment = useCallback(() => {
@@ -24,4 +24,4 @@ export const useCount = () => {
     decrement,
     clear,
   };
-};
+}

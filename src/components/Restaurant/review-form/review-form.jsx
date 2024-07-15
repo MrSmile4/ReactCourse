@@ -73,14 +73,14 @@ export function ReviewForm() {
       <div className={styles.buttons}>
         <CustomButton
           disabled={isReviewWritten}
-          style={styles.clearButton}
+          viewVariant={"wide"}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>
           Save
         </CustomButton>
         <CustomButton
-          style={styles.clearButton}
+          viewVariant={"wide"}
           onClick={() => {
             clear(), dispatch({ type: "clear" });
           }}>

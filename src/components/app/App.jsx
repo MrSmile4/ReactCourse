@@ -3,6 +3,7 @@ import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 import { Layout } from "../layout/Layout";
 import CustomButton from "../custom-button/custom-button";
+import ScrollProgressBar from "../scroll-progress-bar/scroll-progress-bar";
 import styles from "./app.module.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <ScrollProgressBar />
       <Layout>
         <h1>Restaurants list</h1>
         <div className={styles.restaurantButtons}>
