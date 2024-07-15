@@ -8,17 +8,15 @@ export function Reviews({ reviews }) {
       <TitleLabel label="Отзывы:" />
       <ul className={styles.reviewTextGridWithGap}>
         {reviews.map((review) => (
-          <>
-            <li className={styles.reviewTextGrid}>
-              <span>
-                {review.user}: {review.text}
-              </span>
-              <span>
-                {review.rating}
-                <span className={styles.reviewRatingColor}>★</span>
-              </span>
-            </li>
-          </>
+          <li className={styles.reviewTextGrid}>
+            <span>
+              {review.user}: {review.text}
+            </span>
+            <span>
+              {review.rating}
+              <span className={styles.reviewRatingColor}>★</span>
+            </span>
+          </li>
         ))}
       </ul>
       <ReviewForm />
