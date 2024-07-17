@@ -1,8 +1,11 @@
 import { Counter } from "../../counter/counter";
+import { useUser } from "../../user-context/user-context";
 import { TitleLabel } from "../title-label/title-label";
 import styles from "./menu.module.css";
 
 export function Menu({ menu }) {
+  const { value: user } = useUser();
+
   return (
     <>
       <TitleLabel label="Меню:" />
@@ -18,7 +21,7 @@ export function Menu({ menu }) {
                   return i === ingredients.length - 1 ? ing : ing + ", ";
                 })}
               </span>
-              <Counter />
+              {user ? <Counter /> : null}
             </li>
           </>
         ))}

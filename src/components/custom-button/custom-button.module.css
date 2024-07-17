@@ -6,14 +6,40 @@
   width: 60px;
 }
 
-.defaultColor {
+.defaultColorLight {
+  color: black;
   background-color: rgb(167, 226, 191);
+
+  &:disabled {
+    background-color: gray;
+  }
 }
 
-.redColor {
+.defaultColorDark {
+  color: white;
+  background-color: rgb(10, 83, 32);
+
+  &:disabled {
+    background-color: gray;
+  }
+}
+
+.redColorLight {
+  color: black;
   background-color: lightcoral;
 }
 
-.blueColor {
+.redColorDark {
+  color: white;
+  background-color: rgb(97, 9, 9);
+}
+
+.blueColorLight {
+  color: black;
   background-color: lightblue;
+}
+
+.blueColorDark {
+  color: white;
+  background-color: rgb(26, 9, 102);
 }

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Layout } from "../layout/Layout";
 import { CustomButton } from "../custom-button/custom-button";
 import { ScrollProgressBar } from "../scroll-progress-bar/scroll-progress-bar";
+import { ThemeContextProvider } from "../theme-context/theme-context";
+import { UserContextProvider } from "../user-context/user-context";
 import styles from "./app.module.css";
 
 export function App() {
@@ -17,25 +19,29 @@ export function App() {
   }
 
   return (
-    <div>
-      <ScrollProgressBar />
-      <Layout>
-        <h1>Restaurants list</h1>
-        <div className={styles.restaurantButtons}>
-          {restaurants.map((restaurant) => (
-            <CustomButton
-              style={styles.restaurantButton}
-              key={restaurant.id}
-              onClick={() => changeRest(restaurant.id)}>
-              {restaurant.name}
-            </CustomButton>
-          ))}
+    <ThemeContextProvider>
+      <UserContextProvider>
+        <div>
+          <ScrollProgressBar />
+          <Layout>
+            <h1>Restaurants list</h1>
+            <div className={styles.restaurantButtons}>
+              {restaurants.map((restaurant) => (
+                <CustomButton
+                  style={styles.restaurantButton}
+                  key={restaurant.id}
+                  onClick={() => changeRest(restaurant.id)}>
+                  {restaurant.name}
+                </CustomButton>
+              ))}
+            </div>
+            <Restaurant
+              key={currentRest.id}
+              rest={currentRest}
+            />
+          </Layout>
         </div>
-        <Restaurant
-          key={currentRest.id}
-          rest={currentRest}
-        />
-      </Layout>
-    </div>
+      </UserContextProvider>
+    </ThemeContextProvider>
   );
 }

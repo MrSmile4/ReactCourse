@@ -8,7 +8,9 @@ export function Reviews({ reviews }) {
       <TitleLabel label="Отзывы:" />
       <ul className={styles.reviewTextGridWithGap}>
         {reviews.map((review) => (
-          <li className={styles.reviewTextGrid}>
+          <li
+            key={review.id}
+            className={styles.reviewTextGrid}>
             <span>
               {review.user}: {review.text}
             </span>
