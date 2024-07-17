@@ -3,6 +3,7 @@ import { ToggleThemeButton } from "../../toggle-theme-button/toggle-theme-button
 import { UserAuthButton } from "../../user-auth-button/user-auth-button";
 import { useUser } from "../../user-context/user-context";
 import styles from "./header.module.css";
+import { User } from "./user/user";
 
 export function Header() {
   const { value: user } = useUser();
@@ -14,11 +15,7 @@ export function Header() {
         <h2>Our best restaurants</h2>
       </div>
       <div className={styles.headerText}>
-        {user ? (
-          <span className={styles.userText}>
-            {user.firstName} {user.lastName}
-          </span>
-        ) : null}
+        <User user={user} />
         <UserAuthButton />
         <img
           className={styles.img}
