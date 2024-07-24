@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectReviewAuthorById } from "../../../redux/etities/review-author";
+import { selectUserById } from "../../../redux/etities/user";
 import { ReviewAuthor } from "./review-author";
 
 export function ReviewAuthorContainer({ userId }) {
-  const user = useSelector((state) => selectReviewAuthorById(state, userId));
+  const user = useSelector((state) => selectUserById(state, userId));
 
   if (!user) {
     return null;

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { normalizedUsers } from "../../../materials/normalized-mock";
 
-export const ReviewAuthorSlice = createSlice({
-  name: "reviewAuthor",
+export const UserSlice = createSlice({
+  name: "user",
   initialState: {
     entities: normalizedUsers.reduce((acc, item) => {
       acc[item.id] = item;
@@ -12,8 +12,8 @@ export const ReviewAuthorSlice = createSlice({
     ids: normalizedUsers.map((item) => item.id),
   },
   selectors: {
-    selectReviewAuthorById: (state, id) => state.entities[id],
+    selectUserById: (state, id) => state.entities[id],
   },
 });
 
-export const { selectReviewAuthorById } = ReviewAuthorSlice.selectors;
+export const { selectUserById } = UserSlice.selectors;

@@ -10,7 +10,7 @@ export function MenuList({ menuIds }) {
         {menuIds.map((id) => (
           <MenuContainer
             key={id}
-            menuId={id}
+            dishId={id}
           />
         ))}
       </ul>
