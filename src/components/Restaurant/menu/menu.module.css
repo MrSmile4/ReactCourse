@@ -1,8 +1,3 @@
 .menuTextGrid {
   display: grid;
 }
-
-.menuTextGridWithGap {
-  display: grid;
-  gap: 15px;
-}
