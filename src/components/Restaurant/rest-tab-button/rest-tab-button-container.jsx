@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RestTabButton } from "./rest-tab-button";
-import { selectRestaurantById } from "../../../redux/etities/restaurant";
+import { selectRestaurantById } from "../../../redux/etities/restaurant/restaurant";
 
 export const RestTabButtonContainer = ({ id, action }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));

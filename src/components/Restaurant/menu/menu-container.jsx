@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../../../redux/etities/dish";
+import { selectDishById } from "../../../redux/etities/dish/dish";
 import { Menu } from "./menu";
 
 export function MenuContainer({ dishId }) {
