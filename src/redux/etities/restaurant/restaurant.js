@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedRestaurants } from "../../../materials/normalized-mock";
+import { normalizedRestaurants } from "../../../../materials/normalized-mock";
+import { getRestaurants } from "./get-restaurants";
 
 export const RestaurantSlice = createSlice({
   name: "restaurant",
@@ -10,10 +11,23 @@ export const RestaurantSlice = createSlice({
       return acc;
     }, {}),
     ids: normalizedRestaurants.map((item) => item.id),
+    requstStatus: "idle",
   },
   selectors: {
     selectRestaurantsIds: (state) => state.ids,
     selectRestaurantById: (state, id) => state.entities[id],
+  },
+  extraReducers: (bulder) => {
+    bulder
+      .addCase(getRestaurants.pending, (state) => {
+        state.requstStatus = "pending";
+      })
+      .addCase(getRestaurants.fulfilled, (state) => {
+        state.requstStatus = "fulfilled";
+      })
+      .addCase(getRestaurants.rejected, (state) => {
+        state.requstStatus = "rejected";
+      });
   },
 });
 
