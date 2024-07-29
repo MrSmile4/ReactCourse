@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectUserById } from "../../../redux/etities/user";
+import { selectUserById } from "../../../redux/etities/user/user";
 import { ReviewAuthor } from "./review-author";
 
 export function ReviewAuthorContainer({ userId }) {

@@ -3,6 +3,8 @@ import { RestTabButtons } from "./rest-tab-buttons";
 import { useEffect, useState } from "react";
 import { RestaurantContainer } from "../restaurant/restaurant-container";
 import { selectRestaurantsIds } from "../../../redux/etities/restaurant/restaurant";
+import { getRestaurants } from "../../../redux/etities/restaurant/get-restaurants";
+import { useRequest } from "../../../hooks/use-request";
 
 export const RestTabsContainer = () => {
   const [currentRestId, setCurrentRestId] = useState(undefined);
@@ -10,10 +12,20 @@ export const RestTabsContainer = () => {
   const restIds = useSelector(selectRestaurantsIds);
 
   useEffect(() => {
-    setCurrentRestId(restIds[0]);
-  }, []);
+    if (restIds?.length) setCurrentRestId(restIds[0]);
+  }, [restIds]);
 
-  if (!restIds.length) {
+  const restaurantsRequestStatus = useRequest(getRestaurants);
+
+  const isLoading =
+    restaurantsRequestStatus === "pending" ||
+    restaurantsRequestStatus === "idle";
+
+  if (isLoading) {
+    return "Loading";
+  }
+
+  if (!restIds?.length) {
     return null;
   }
 
