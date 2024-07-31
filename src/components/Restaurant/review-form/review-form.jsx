@@ -7,7 +7,8 @@ import styles from "./review-form.module.css";
 const INIT_FORM = {
   name: "",
   text: "",
-  score: 0,
+  rating: 0,
+  userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54",
 };
 
 function reducer(state, { type, payload }) {
@@ -16,8 +17,8 @@ function reducer(state, { type, payload }) {
       return { ...state, name: payload };
     case "setText":
       return { ...state, text: payload };
-    case "setScore":
-      return { ...state, score: payload };
+    case "setRating":
+      return { ...state, rating: payload };
     case "clear":
       return INIT_FORM;
     default:
@@ -25,16 +26,16 @@ function reducer(state, { type, payload }) {
   }
 }
 
-export function ReviewForm() {
+export function ReviewForm({ onCreateReview }) {
   const { count, increment, decrement, clear } = useCount();
 
   const [form, dispatch] = useReducer(reducer, INIT_FORM);
-  const { name, text, score } = form;
+  const { name, text, rating } = form;
 
   const isReviewWritten = form.name === "" || form.text === "";
 
   useEffect(() => {
-    dispatch({ type: "setScore", payload: count });
+    dispatch({ type: "setRating", payload: count });
   }, [count]);
 
   return (
@@ -54,7 +55,7 @@ export function ReviewForm() {
           dispatch({ type: "setText", payload: event.target.value });
         }}
       />
-      <span>Score: </span>
+      <span>Rating: </span>
       <div className={styles.counter}>
         <CustomButton
           onClick={() => {
@@ -62,7 +63,7 @@ export function ReviewForm() {
           }}>
           -
         </CustomButton>
-        {score}
+        {rating}
         <CustomButton
           onClick={() => {
             increment();
@@ -75,7 +76,11 @@ export function ReviewForm() {
           disabled={isReviewWritten}
           viewVariant={"wide"}
           onClick={() => {
-            clear(), dispatch({ type: "clear" });
+            console.log("before: " + form);
+            onCreateReview(form);
+            clear();
+            console.log(form);
+            dispatch({ type: "clear" });
           }}>
           Save
         </CustomButton>

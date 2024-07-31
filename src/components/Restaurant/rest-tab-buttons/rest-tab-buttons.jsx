@@ -1,14 +1,15 @@
-import { RestTabButtonContainer } from "../rest-tab-button/rest-tab-button-container";
+import { RestTabButton } from "../rest-tab-button/rest-tab-button";
 import styles from "./rest-tab-buttons.module.css";
 
-export const RestTabButtons = ({ restIds, setCurrentRestId }) => {
+export const RestTabButtons = ({ rests, setCurrentRest }) => {
   return (
     <div className={styles.restaurantButtons}>
-      {restIds.map((id) => (
-        <RestTabButtonContainer
-          key={id}
-          id={id}
-          action={setCurrentRestId}
+      {rests.map((item) => (
+        <RestTabButton
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          action={() => setCurrentRest(item)}
         />
       ))}
     </div>

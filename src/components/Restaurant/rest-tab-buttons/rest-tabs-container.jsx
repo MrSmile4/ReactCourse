@@ -1,29 +1,72 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../../redux/etities/restaurant";
 import { RestTabButtons } from "./rest-tab-buttons";
 import { useEffect, useState } from "react";
-import { RestaurantContainer } from "../restaurant/restaurant-container";
+import {
+  useCreateReviewMutation,
+  useGetDishesByRestaurantIdQuery,
+  useGetRestaurantsQuery,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../../redux/services/api";
+import { Restaurant } from "../restaurant/Restaurant";
 
 export const RestTabsContainer = () => {
-  const [currentRestId, setCurrentRestId] = useState(undefined);
+  const [currentRest, setCurrentRest] = useState(undefined);
 
-  const restIds = useSelector(selectRestaurantsIds);
+  const {
+    data: restaurants,
+    isError: restaurantsIsError,
+    isFetching: restaurantsIsFetching,
+    isLoading: restaurantsIsLoading,
+  } = useGetRestaurantsQuery();
+
+  const {
+    data: dishes,
+    isError: dishesIsError,
+    isFetching: dishesIsFetching,
+    isLoading: dishesIsLoading,
+  } = useGetDishesByRestaurantIdQuery(currentRest?.id);
+
+  const {
+    data: reviews,
+    isError: reviewsIsError,
+    isFetching: reviewsIsFetching,
+    isLoading: reviewsIsLoading,
+  } = useGetReviewsByRestaurantIdQuery(currentRest?.id);
+
+  const [createReview] = useCreateReviewMutation();
 
   useEffect(() => {
-    setCurrentRestId(restIds[0]);
-  }, []);
+    if (restaurants) setCurrentRest(restaurants[0]);
+  }, [restaurants]);
 
-  if (!restIds.length) {
-    return null;
+  if (
+    restaurantsIsFetching ||
+    restaurantsIsLoading ||
+    dishesIsFetching ||
+    dishesIsLoading ||
+    reviewsIsFetching ||
+    reviewsIsLoading
+  ) {
+    return "Loading";
+  }
+
+  if (restaurantsIsError || dishesIsError || reviewsIsError) {
+    return "Error";
   }
 
   return (
     <>
       <RestTabButtons
-        restIds={restIds}
-        setCurrentRestId={setCurrentRestId}
+        rests={restaurants}
+        setCurrentRest={setCurrentRest}
       />
-      <RestaurantContainer restId={currentRestId} />
+      <Restaurant
+        name={currentRest?.name}
+        menu={dishes}
+        reviews={reviews}
+        onCreateReview={(review) =>
+          createReview({ review, restaurantId: currentRest.id })
+        }
+      />
     </>
   );
 };
