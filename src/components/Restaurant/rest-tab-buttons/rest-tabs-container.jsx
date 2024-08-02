@@ -1,12 +1,7 @@
 import { RestTabButtons } from "./rest-tab-buttons";
 import { useEffect, useState } from "react";
-import {
-  useCreateReviewMutation,
-  useGetDishesByRestaurantIdQuery,
-  useGetRestaurantsQuery,
-  useGetReviewsByRestaurantIdQuery,
-} from "../../../redux/services/api";
-import { Restaurant } from "../restaurant/Restaurant";
+import { useGetRestaurantsQuery } from "../../../redux/services/api";
+import { RestaurantContainer } from "../restaurant/restaurant-container";
 
 export const RestTabsContainer = () => {
   const [currentRest, setCurrentRest] = useState(undefined);
@@ -18,38 +13,15 @@ export const RestTabsContainer = () => {
     isLoading: restaurantsIsLoading,
   } = useGetRestaurantsQuery();
 
-  const {
-    data: dishes,
-    isError: dishesIsError,
-    isFetching: dishesIsFetching,
-    isLoading: dishesIsLoading,
-  } = useGetDishesByRestaurantIdQuery(currentRest?.id);
-
-  const {
-    data: reviews,
-    isError: reviewsIsError,
-    isFetching: reviewsIsFetching,
-    isLoading: reviewsIsLoading,
-  } = useGetReviewsByRestaurantIdQuery(currentRest?.id);
-
-  const [createReview] = useCreateReviewMutation();
-
   useEffect(() => {
     if (restaurants) setCurrentRest(restaurants[0]);
   }, [restaurants]);
 
-  if (
-    restaurantsIsFetching ||
-    restaurantsIsLoading ||
-    dishesIsFetching ||
-    dishesIsLoading ||
-    reviewsIsFetching ||
-    reviewsIsLoading
-  ) {
+  if (restaurantsIsFetching || restaurantsIsLoading) {
     return "Loading";
   }
 
-  if (restaurantsIsError || dishesIsError || reviewsIsError) {
+  if (restaurantsIsError) {
     return "Error";
   }
 
@@ -59,14 +31,7 @@ export const RestTabsContainer = () => {
         rests={restaurants}
         setCurrentRest={setCurrentRest}
       />
-      <Restaurant
-        name={currentRest?.name}
-        menu={dishes}
-        reviews={reviews}
-        onCreateReview={(review) =>
-          createReview({ review, restaurantId: currentRest.id })
-        }
-      />
+      {currentRest && <RestaurantContainer rest={currentRest} />}
     </>
   );
 };
