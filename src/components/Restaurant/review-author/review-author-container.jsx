@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectUserById } from "../../../redux/etities/user";
 import { ReviewAuthor } from "./review-author";
+import { useGetUsersQuery } from "../../../redux/services/api";
 
 export function ReviewAuthorContainer({ userId }) {
-  const user = useSelector((state) => selectUserById(state, userId));
+  const { data: user } = useGetUsersQuery(userId);
 
   if (!user) {
     return null;

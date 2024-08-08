@@ -1,29 +1,37 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../../redux/etities/restaurant";
 import { RestTabButtons } from "./rest-tab-buttons";
 import { useEffect, useState } from "react";
+import { useGetRestaurantsQuery } from "../../../redux/services/api";
 import { RestaurantContainer } from "../restaurant/restaurant-container";
 
 export const RestTabsContainer = () => {
-  const [currentRestId, setCurrentRestId] = useState(undefined);
+  const [currentRest, setCurrentRest] = useState(undefined);
 
-  const restIds = useSelector(selectRestaurantsIds);
+  const {
+    data: restaurants,
+    isError: restaurantsIsError,
+    isFetching: restaurantsIsFetching,
+    isLoading: restaurantsIsLoading,
+  } = useGetRestaurantsQuery();
 
   useEffect(() => {
-    setCurrentRestId(restIds[0]);
-  }, []);
+    if (restaurants) setCurrentRest(restaurants[0]);
+  }, [restaurants]);
 
-  if (!restIds.length) {
-    return null;
+  if (restaurantsIsFetching || restaurantsIsLoading) {
+    return "Loading";
+  }
+
+  if (restaurantsIsError) {
+    return "Error";
   }
 
   return (
     <>
       <RestTabButtons
-        restIds={restIds}
-        setCurrentRestId={setCurrentRestId}
+        rests={restaurants}
+        setCurrentRest={setCurrentRest}
       />
-      <RestaurantContainer restId={currentRestId} />
+      {currentRest && <RestaurantContainer rest={currentRest} />}
     </>
   );
 };

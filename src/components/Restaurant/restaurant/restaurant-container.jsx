@@ -1,16 +1,48 @@
-import { useSelector } from "react-redux";
 import { Restaurant } from "./Restaurant";
-import { selectRestaurantById } from "../../../redux/etities/restaurant";
+import {
+  useCreateReviewMutation,
+  useGetDishesByRestaurantIdQuery,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../../redux/services/api";
 
-export function RestaurantContainer({ restId }) {
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restId)
-  );
+export function RestaurantContainer({ rest }) {
+  const {
+    data: dishes,
+    isError: dishesIsError,
+    isFetching: dishesIsFetching,
+    isLoading: dishesIsLoading,
+  } = useGetDishesByRestaurantIdQuery(rest?.id);
+
+  const {
+    data: reviews,
+    isError: reviewsIsError,
+    isFetching: reviewsIsFetching,
+    isLoading: reviewsIsLoading,
+  } = useGetReviewsByRestaurantIdQuery(rest?.id);
+
+  const [createReview] = useCreateReviewMutation();
+
+  if (
+    dishesIsFetching ||
+    dishesIsLoading ||
+    reviewsIsFetching ||
+    reviewsIsLoading
+  ) {
+    return "Loading";
+  }
+
+  if (dishesIsError || reviewsIsError) {
+    return "Error";
+  }
 
   return (
     <Restaurant
-      key={restId}
-      rest={restaurant}
+      name={rest?.name}
+      menu={dishes}
+      reviews={reviews}
+      onCreateReview={(review) =>
+        createReview({ review, restaurantId: rest.id })
+      }
     />
   );
 }

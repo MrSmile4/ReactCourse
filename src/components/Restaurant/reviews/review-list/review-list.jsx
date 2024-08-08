@@ -1,10 +1,10 @@
 import { ReviewForm } from "../../review-form/review-form";
 import { TitleLabel } from "../../title-label/title-label";
-import { ReviewContainer } from "../review-container";
+import { Review } from "../review";
 import styles from "./review-list.module.css";
 
-export function ReviewList({ reviewIds }) {
-  if (!reviewIds) {
+export function ReviewList({ reviews, onCreateReview }) {
+  if (!reviews) {
     return null;
   }
 
@@ -12,14 +12,14 @@ export function ReviewList({ reviewIds }) {
     <div>
       <TitleLabel label="Отзывы:" />
       <ul className={styles.reviewTextGridWithGap}>
-        {reviewIds.map((id) => (
-          <ReviewContainer
-            key={id}
-            reviewId={id}
+        {reviews.map((review) => (
+          <Review
+            key={review.id}
+            review={review}
           />
         ))}
       </ul>
-      <ReviewForm />
+      <ReviewForm onCreateReview={onCreateReview} />
     </div>
   );
 }
