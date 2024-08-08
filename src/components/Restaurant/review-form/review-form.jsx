@@ -76,10 +76,8 @@ export function ReviewForm({ onCreateReview }) {
           disabled={isReviewWritten}
           viewVariant={"wide"}
           onClick={() => {
-            console.log("before: " + form);
             onCreateReview(form);
             clear();
-            console.log(form);
             dispatch({ type: "clear" });
           }}>
           Save

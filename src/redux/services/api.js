@@ -35,7 +35,6 @@ export const apiSlice = createApi({
         body: review,
       }),
       invalidatesTags: (result, _, { restaurantId }) => [
-        { type: "Review", id: result.id },
         { type: "Review", restaurantId },
       ],
     }),
